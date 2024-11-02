@@ -1,15 +1,18 @@
 import random
+import time
+import os
 
-def lanzar_dado():
-    return random.randint(1, 6)
+# Lanzar un dado
+resultado = random.randint(1, 6)
+os.system('cls')
+print("La suerte a sido hechada")
 
-def simulacion_lanzamientos(cantidad_lanzamientos):
-    resultados = []
-    for _ in range(cantidad_lanzamientos):
-        resultado = lanzar_dado()
-        resultados.append(resultado)
-    return resultados
+# Mostrar barra de progreso
+for i in range(101):
+    porcentaje = i
+    num_hashes = porcentaje // 2
+    barra = '[' + '#' * num_hashes + '-' * (50 - num_hashes) + ']'
+    print(f'\r{barra} {porcentaje}%', end='')
+    time.sleep(0.05)
 
-cantidad_lanzamientos = int(input("¿Cuántas veces deseas lanzar el dado? "))
-resultados = simulacion_lanzamientos(cantidad_lanzamientos)
-print("Resultados de los lanzamientos:", resultados)
+print(f"\nResultado del lanzamiento: {resultado}")
